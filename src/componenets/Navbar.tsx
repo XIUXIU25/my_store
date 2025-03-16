@@ -2,10 +2,14 @@ import Link from "next/link"
 import MaxWidthWrapper from "./MaxWidthWrapper"
 import { buttonVariants } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import {getKindeServerSession} from '@kinde-oss/kinde-auth-nextjs/server'
 
-const Navbar=()=>{
-    const user=undefined
-    const isAdmin=false
+const Navbar=async()=>{
+    const {getUser} =getKindeServerSession()
+    const user=await getUser()
+
+    const isAdmin=user?.email===process.env.ADMIN_EMAIL
+    
     return <nav className="sticky z-[100] h-14 inset-x-0 top-0 w-full border-b border-grey-200 bg-white/75 backdrop-blur-lg transition-a">
         <MaxWidthWrapper>
             <div className="flex h-14 items-center justify-between border-b border-zinc-200">
@@ -51,7 +55,7 @@ const Navbar=()=>{
 
                         <div className="h-8 w-px bg-zinc-200 hidden sm:block"/>
                         <Link href="/configure/upload" className={buttonVariants({
-                            size: 'sm', 
+                            size: 'sm',variant:"ghost",
                             className:"hidden sm:flex items-center gap-1"
                             })}>
                            Create Case
