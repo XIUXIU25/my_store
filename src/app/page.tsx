@@ -1,3 +1,5 @@
+'use client'
+
 import MaxWidthWrapper from "@/componenets/MaxWidthWrapper";
 import Image from "next/image";
 import { Check } from "lucide-react";
@@ -8,6 +10,7 @@ import { Reviews } from "@/componenets/Reviews";
 
 export default function Home() {
   return (
+    
     <div className="bg-slate-50">
       <section>
         <MaxWidthWrapper className="p-24 pt-10 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-24 xl:pt-32 lg:pb-52">
@@ -151,10 +154,23 @@ export default function Home() {
             </div>
           </div>
         </MaxWidthWrapper>
-        <div className="pt-16">
+
+        <div className="pt-16" >
           <Reviews />
         </div>
+      </section>
 
+      <section>
+        <MaxWidthWrapper className="py-24">
+          <div className="mb-12 px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl sm:text-center">
+            <h2 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900">
+              Upload your photo and get{' '} <span className="relative px-2">your own case<Icons.underline className="hidden sm:block pointer-events-none absolute inset-x-0 -bottom-6 text-green-500
+              "/></span> now
+              </h2>
+            </div>
+          </div>
+        </MaxWidthWrapper>
       </section>
     </div>
   );
